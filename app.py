@@ -39,14 +39,14 @@ print("\n\nProcessing.....")
 # # options.add_argument('headless')
 # driver =webdriver.Chrome(path,options=options)
 proxies = {
- "http": "http://10.10.10.10:8000",
- "https": "http://10.10.10.10:8000",
+ "http": "10.10.1.10:3128",
+ "https": "10.10.1.11:1080",
 }
 
 url = "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q="
 def getHeadings(url,first):
     try:
-        page = requests.get(url+first,proxies=proxies)
+        page = requests.get(url+first)
         tree  = html.fromstring(page.content)
         print("success : Loaded...")
     except Exception as e:
