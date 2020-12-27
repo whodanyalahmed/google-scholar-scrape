@@ -1,6 +1,5 @@
 from selenium import webdriver
 import requests
-from lxml import html
 from bs4 import BeautifulSoup
 import selenium
 from selenium.common.exceptions import TimeoutException
@@ -45,7 +44,7 @@ def getHeadings(url,first):
     try:
         driver.get(url+first)
         print("success : Loaded...")
-    except Exception as e:
+    except TimeoutException as e:
         print("info : website taking too long to load...stopped" + e)
         driver.refresh()
     headings = driver.find_elements_by_xpath('//div[@class="gs_ri"]/h3')
