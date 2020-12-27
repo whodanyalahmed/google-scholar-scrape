@@ -43,12 +43,12 @@ driver =webdriver.Chrome(path,options=options)
 url = "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q="
 def getHeadings(url,first):
     try:
-        page = requests.get(url+first)
-        tree  = html.fromstring(page.content)
+        driver.get(url+first)
         print("success : Loaded...")
     except Exception as e:
         print("info : website taking too long to load...stopped" + e)
-    headings = tree.xpath('//div[@class="gs_ri"]/h3')
+        driver.refresh()
+    headings = driver.find_elements_by_xpath('//div[@class="gs_ri"]/h3')
 
     return headings
 
